@@ -2,7 +2,7 @@
 
 body {
     background: #ffffff;
-    font-family: Monospace, sans-serif;
+  font-family: 'Jua', sans-serif;
 	  box-sizing: border-box;
   color: #35465d;
 }
@@ -17,8 +17,7 @@ body {
 
 .title {
 	font-size : 4rem;
-	font-family: Monospace;
-	text-shadow: 3px 3px 3px #ababab;
+	  font-family: 'Jua', sans-serif;
 	font-weight: bold;
 	line-height:1.9rem;
 	text-align:center;
@@ -93,7 +92,6 @@ bottom : 0;
   }
 	.title {
 	font-size : 4rem;
-	text-shadow: 3px 3px 3px #ababab;
 	font-weight: bold;
 	line-height:1.9rem;
 	text-align:center;
