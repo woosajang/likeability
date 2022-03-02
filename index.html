@@ -83,7 +83,7 @@
 			src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
 		></script>
 
-		<div class="mt-3 container file-upload">
+		<div class="file-upload container mt-3 mb-5 d-flex justify-content-center">
 			<div class="image-upload-wrap">
 				<input
 					class="file-upload-input d-flex justify-content-center"
@@ -92,7 +92,6 @@
 					accept="image/*"
 				/>
 				<div class="drag-text">
-
 					<h3 class="upload-text mt-1">
 						정면 셀피를 올려놓거나 눌러서 업로드 하세요! (얼굴이 중앙에 있어야 점수가
 						높게 나와요!!)
@@ -126,38 +125,41 @@
 					자신있다면 친구에게 공유하기
 				</h5>
 				<div class="addthis_inline_share_toolbox_t4lq"></div>
-				<div class="container"></div>
-				<div class="ad-banner mt-3">
-					<ins
-						class="kakao_ad_area"
-						style="display: none;"
-						data-ad-unit="DAN-S95KWtb8JYMve2eQ"
-						data-ad-width="320"
-						data-ad-height="100"
-					></ins>
-					<script
-						type="text/javascript"
-						src="//t1.daumcdn.net/kas/static/ba.min.js"
-						async
-					></script>
-				</div>
-				<div class="ad-banner mt-3">
-					<ins
-						class="kakao_ad_area"
-						style="display: none;"
-						data-ad-unit="DAN-DlJhL619j2tXYlwU"
-						data-ad-width="320"
-						data-ad-height="100"
-					></ins>
-					<script
-						type="text/javascript"
-						src="//t1.daumcdn.net/kas/static/ba.min.js"
-						async
-					></script>
-				</div>
 			</div>
 		</div>
 		<div class="container"></div>
+		<div class="ad-hide">
+			<div class="ad-banner mt-3">
+				<ins
+					class="kakao_ad_area"
+					style="display: none;"
+					data-ad-unit="DAN-S95KWtb8JYMve2eQ"
+					data-ad-width="320"
+					data-ad-height="100"
+				></ins>
+				<script
+					type="text/javascript"
+					src="//t1.daumcdn.net/kas/static/ba.min.js"
+					async
+				></script>
+			</div>
+			<div class="ad-banner mt-3">
+				<ins
+					class="kakao_ad_area"
+					style="display: none;"
+					data-ad-unit="DAN-DlJhL619j2tXYlwU"
+					data-ad-width="320"
+					data-ad-height="100"
+				></ins>
+				<script
+					type="text/javascript"
+					src="//t1.daumcdn.net/kas/static/ba.min.js"
+					async
+				></script>
+			</div>
+		</div>
+
+		
 
 		<script>
 			function readURL(input) {
@@ -165,6 +167,7 @@
 					var reader = new FileReader();
 					reader.onload = function (e) {
 						$('.image-upload-wrap').hide();
+						$('.ad-hide').hide();
 						$('#loading').show();
 						$('.file-upload-image').attr('src', e.target.result);
 						$('.file-upload-content').show();
@@ -185,6 +188,7 @@
 				$('.file-upload-input').replaceWith($('.file-upload-input').clone());
 				$('.file-upload-content').hide();
 				$('.image-upload-wrap').show();
+				$('.ad-hide').show();
 			}
 			$('.image-upload-wrap').bind('dragover', function () {
 				$('.image-upload-wrap').addClass('image-dropping');
