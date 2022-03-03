@@ -1,0 +1,4 @@
+User-Agent:*
+Allow: /
+
+Sitemap: https://happy-bartik-86ebde.netlify.app/sitemap.xml
