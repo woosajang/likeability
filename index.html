@@ -61,12 +61,11 @@
 					이성이 생각하는 당신의 호감도는 몇점?
 				</h2>
 				<h3 class="subtitle mt-3 font-effect-emboss">
-					AI가 예측하는 당신의 호감도 
+					AI가 예측하는 당신의 호감도
 				</h3>
-								<h3 class="subtitle mt-3">
+				<h3 class="subtitle mt-3">
 					(서버에 사진을 전송하지 않습니다!)
 				</h3>
-				
 			</section>
 		</div>
 		<h4 class="subtitle_2 pb-2 d-flex justify-content-center">성별을 선택하세요</h4>
@@ -163,8 +162,6 @@
 			</div>
 		</div>
 
-		
-
 		<script>
 			function readURL(input) {
 				if (input.files && input.files[0]) {
@@ -250,10 +247,10 @@
 				if (document.getElementById('gender').checked) {
 					switch (prediction[0].className) {
 						case '50':
-							resultTitle ='시각을 포기한다';
+							resultTitle = '시각을 포기한다';
 							break;
 						case '60':
-							resultTitle =  '매... 매력있으세요... 화이팅...!!';
+							resultTitle = '매... 매력있으세요... 화이팅...!!';
 							break;
 						case '70':
 							resultTitle = '용기냅시다! 그깟 AI';
@@ -262,7 +259,13 @@
 							resultTitle = '사는데 불편함은 없어요';
 							break;
 						case '85':
-							resultTitle = '오~ 마스크 안썼다면 ㅇㅈ';
+							if (parseFloat(prediction[0].probability) > 0.85) {
+								ttl_score = 0;
+								resultTitle =
+									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
+							} else {
+								resultTitle = '오~ 마스크 안썼다면 ㅇㅈ';
+							}
 							break;
 						case '90':
 							resultTitle = '대애박! 존잘남 출현';
@@ -291,6 +294,13 @@
 							resultTitle = '수준급!! 근데 ULIKE 냄새남';
 							break;
 						case '85':
+							if (parseFloat(prediction[0].probability) > 0.85) {
+								ttl_score = 0;
+								resultTitle =
+									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
+							} else {
+								resultTitle = '오~ 마스크 안썼다면 ㅇㅈ';
+							}
 							resultTitle = '오~ 마스크 안썼다면 ㅇㅈ';
 							break;
 						case '90':
@@ -306,6 +316,13 @@
 							resultTitle = '알수없음';
 					}
 				}
+							if (parseFloat(prediction[0].probability) < 0.5) {
+								ttl_score = 0;
+								resultTitle =
+									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
+							} else {
+								console.log("false");
+							}
 				var Score_ttl = "<div class='Score_ttl_class'>" + ttl_score + '</div>';
 
 				var title = "<div class='Score-title'>" + resultTitle + '</div>';
