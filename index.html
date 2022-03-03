@@ -259,7 +259,7 @@
 							resultTitle = '사는데 불편함은 없어요';
 							break;
 						case '85':
-							if (parseFloat(prediction[0].probability) > 0.85) {
+							if (parseFloat(prediction[0].probability) > 0.90) {
 								ttl_score = 0;
 								resultTitle =
 									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
@@ -294,7 +294,7 @@
 							resultTitle = '수준급!! 근데 ULIKE 냄새남';
 							break;
 						case '85':
-							if (parseFloat(prediction[0].probability) > 0.85) {
+							if (parseFloat(prediction[0].probability) > 0.90) {
 								ttl_score = 0;
 								resultTitle =
 									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
@@ -316,13 +316,7 @@
 							resultTitle = '알수없음';
 					}
 				}
-							if (parseFloat(prediction[0].probability) < 0.5) {
-								ttl_score = 0;
-								resultTitle =
-									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
-							} else {
-								console.log("false");
-							}
+
 				var Score_ttl = "<div class='Score_ttl_class'>" + ttl_score + '</div>';
 
 				var title = "<div class='Score-title'>" + resultTitle + '</div>';
