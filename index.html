@@ -23,6 +23,17 @@
 			type="text/javascript"
 			src="//s7.addthis.com/js/300/addthis_widget.js#pubid= ra-621857c17bc1c90b"
 		></script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-5RS21SJWCK"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+
+			gtag('config', 'G-5RS21SJWCK');
+		</script>
 	</head>
 	<body>
 		<nav id="navbar-example2" class="navbar navbar-light bg-light nav-distance px-3">
@@ -259,7 +270,7 @@
 							resultTitle = '사는데 불편함은 없어요';
 							break;
 						case '85':
-							if (parseFloat(prediction[0].probability) > 0.90) {
+							if (parseFloat(prediction[0].probability) > 0.9) {
 								ttl_score = 0;
 								resultTitle =
 									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
@@ -294,14 +305,14 @@
 							resultTitle = '사는데 불편함은 없어요';
 							break;
 						case '85':
-							if (parseFloat(prediction[0].probability) > 0.90) {
+							if (parseFloat(prediction[0].probability) > 0.9) {
 								ttl_score = 0;
 								resultTitle =
 									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
 							} else {
 								resultTitle = '오~ 마스크 안썼다면 ㅇㅈ';
 							}
-				
+
 							break;
 						case '90':
 							resultTitle = '저기 연락처좀..? 상위 10% 이상';
