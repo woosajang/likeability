@@ -218,8 +218,10 @@
 
 			// the link to your model provided by Teachable Machine export panel
 			let URL;
-			const urlMale = 'https://teachablemachine.withgoogle.com/models/2TPcAdY8q/';
-			const urlFemale = 'https://teachablemachine.withgoogle.com/models/99XZmghWv/';
+			// const urlMale = 'https://teachablemachine.withgoogle.com/models/2TPcAdY8q/';
+			// const urlFemale = 'https://teachablemachine.withgoogle.com/models/99XZmghWv/';
+			const urlMale = 'https://teachablemachine.withgoogle.com/models/QOx0xutsI/';
+			const urlFemale = 'https://teachablemachine.withgoogle.com/models/WIcO9pn5G/';
 			let model, webcam, labelContainer, maxPredictions;
 			async function init() {
 				if (document.getElementById('gender').checked) {
@@ -248,10 +250,21 @@
 				console.log(prediction[0].className);
 				let ttl_score = 0;
 				for (let i = 0; i < 7; i++) {
-					let score =
-						parseFloat(prediction[i].className) * parseFloat(prediction[i].probability);
+					if (
+						prediction[i].className == 'mask' ||
+						prediction[i].className == 'dog' ||
+						prediction[i].className == 'cat'
+					) {
+						let score = parseFloat(prediction[i].probability) * 50
+						ttl_score = ttl_score + score;
+						continue;
+					} else {
+						let score =
+							parseFloat(prediction[i].className) *
+							parseFloat(prediction[i].probability);
 
-					ttl_score = ttl_score + score;
+						ttl_score = ttl_score + score;
+					}
 				}
 				ttl_score = ttl_score.toFixed(2);
 				var resultTitle;
@@ -269,23 +282,23 @@
 						case '80':
 							resultTitle = '사는데 불편함은 없어요';
 							break;
-						case '85':
-							if (parseFloat(prediction[0].probability) > 0.9) {
-								ttl_score = 0;
-								resultTitle =
-									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
-							} else {
-								resultTitle = '오~ 마스크 안썼다면 ㅇㅈ';
-							}
+						case 'mask':
+							ttl_score = 85;
+							resultTitle = '마스크 쓰니까 좀 낫네';
 							break;
 						case '90':
 							resultTitle = '대애박! 존잘남 출현';
 							break;
-						case '95':
-							resultTitle = '코로나가 고마운 당신은 마기꾼';
-							break;
 						case '100':
 							resultTitle = '연예인 합시다 그냥';
+							break;
+						case 'dog':
+							ttl_score = 100;
+							resultTitle = '아우 우리 댕댕이 귀여워!!';
+							break;
+						case 'cat':
+							ttl_score = 100;
+							resultTitle = '아우 우리 냥이 귀여워!!';
 							break;
 						default:
 							resultTitle = '알수없음';
@@ -304,24 +317,22 @@
 						case '80':
 							resultTitle = '사는데 불편함은 없어요';
 							break;
-						case '85':
-							if (parseFloat(prediction[0].probability) > 0.9) {
-								ttl_score = 0;
-								resultTitle =
-									'사람 얼굴 사진 맞나요? 얼굴이 잘 나온 사진으로 다시 올려주세요~';
-							} else {
-								resultTitle = '오~ 마스크 안썼다면 ㅇㅈ';
-							}
-
-							break;
 						case '90':
 							resultTitle = '저기 연락처좀..? 상위 10% 이상';
 							break;
-						case '95':
-							resultTitle = '코로나가 고마운 당신은 마기꾼';
-							break;
 						case '100':
 							resultTitle = '미쳣... 연예인이심?';
+						case 'mask':
+							ttl_score = 85;
+							resultTitle = '마스크 쓰니까 좀 낫네';
+							break;
+						case 'dog':
+							ttl_score = 100;
+							resultTitle = '아우 우리 댕댕이 귀여워!!';
+							break;
+						case 'cat':
+							ttl_score = 100;
+							resultTitle = '아우 우리 냥이 귀여워!!';
 							break;
 						default:
 							resultTitle = '알수없음';
